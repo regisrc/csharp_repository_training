@@ -1,0 +1,16 @@
+1 - Criar um console app que apresente as boa vindas mostre um texto, e depois indique que o mesmo
+deverá apertar qualquer tecla para finalizar.
+2 - Criar um console app que apresente as boas vindas, solicite o nome do usuário. completo e
+mostre uma mensagem de boas vindas com o nome do usuário.
+3 - Criar um console app que solicite o nome e a idade, e após informar nome e idade o mesmo
+deverá apresentar quando maior ou igual a 18 anos a seguinte informação:
+"Parabéns {nome} você já esta na fase adulta."
+caso menor de 18 anos o mesmo deverá apresentar a seguinte informação:
+"Calma {nome} tudo ao seu tempo logo você terá 18 anos de idade."
+4 - Criar um console app que apresente a quantidade total de caracteres que contém em um texto informado
+pelo usuário.
+5 - Criar um console app que apresente o primeiro e o ultimo caractere de uma palavra informada.
+6 - Criar um console app que quando informado o texto contendo banana ele troque esta informação
+por laranja.
+7 - Criar um console app conte a quantidade de "a","e","i","o" e "u" dentro de um texto informado
+pelo usuário.

@@ -15,7 +15,7 @@ namespace Exercicio8
 
         private static void app()
         {
-            var pessoas = openText(returnText());  
+            var pessoas = openText(returnText());
             var temp = "";
             foreach (var item in pessoas)
             {

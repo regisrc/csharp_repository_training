@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace DesenhandoArvore
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            ListarMarcas();
+            PrintTree();
         }
 
         public static void ListarMarcas()
@@ -40,34 +41,76 @@ namespace DesenhandoArvore
             Console.WriteLine($"Área do quadrado: {Convert.ToInt32(baseQuadr) * Convert.ToInt32(alturaQuadr)}");
         }
 
-        public static void ReturnTree()
+        public static void PrintTree()
         {
             var caracter = "/";
             var caracterCresce = $"\\";
             var tamanhoLenght = 10;
             var tamanhoEspacos = 10;
-            for (int i = 0; i <= tamanhoLenght; i++)
+            Random randNum = new Random();
+            while (true)
             {
-                for (int b = 0; b < tamanhoEspacos; b++)
+                for (int i = 0; i <= tamanhoLenght; i++)
                 {
-                    Console.Write(" ");
+                    for (int b = 0; b < tamanhoEspacos; b++)
+                    {
+                        Console.Write(" ");
+                    }
+                    tamanhoEspacos--;
+                    Console.Write(caracter);
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (randNum.Next(100) % 2 == 0)
+                            Console.Write("0");
+                        else
+                            Console.Write("1");
+                        if (randNum.Next(100) % 2 == 0)
+                            Console.Write("1");
+                        else
+                            Console.Write("0");
+                    }
+                    Console.WriteLine($"{caracterCresce}");
                 }
-                tamanhoEspacos--;
-                Console.Write(caracter);
-                for (int j = 0; j < i; j++)
+                for (int c = 0; c < 3; c++)
                 {
-                    Console.Write("**");
+                    for (int i = 0; i < tamanhoLenght - 1; i++)
+                    {
+                        Console.Write(" ");
+                    }
+                    Console.WriteLine("||||");
                 }
-                Console.WriteLine($"{caracterCresce}");
-            }
-            for (int c = 0; c < 5; c++)
-            {
-                for (int i = 0; i < tamanhoLenght - 1; i++)
-                {
-                    Console.Write(" ");
-                }
-                Console.WriteLine("****");
+                tamanhoEspacos = 10;
+                Thread.Sleep(250);
+                Console.Clear();
             }
         }
+
+        public static void CalculateAverage()
+        {
+            var listaAlunos = new List<double>();
+            for (int i = 0; i < 4; i++)
+            {
+                Console.Write($"Digite a nota do aluno {i + 1}: ");
+                listaAlunos.Add(double.Parse(Console.ReadLine()));
+            }
+            var notaFinal = FinalGrade(listaAlunos);
+            Console.Clear();
+            for (int i = 0; i < listaAlunos.Count; i++)
+                Console.WriteLine($"Nota {i + 1}: {listaAlunos[i]}");
+            Console.WriteLine($"Nota Final: {notaFinal}");
+            Console.WriteLine(ReturnStringOfSituation(notaFinal));
+        }
+
+        private static double FinalGrade(List<double> lista)
+        {
+            var nota = 0.0;
+            lista.ForEach(i => nota += i);
+            return nota / lista.Count;
+        }
+
+        private static string ReturnStringOfSituation(double nota) => ReturnSituation(nota) ? "Aluno Aprovado" : "Aluno Reprovado";
+
+
+        private static bool ReturnSituation(double nota) => nota >= 7;
     }
 }
